@@ -40,18 +40,18 @@ export default function Dashboard({ onSelectStudent }) {
     );
   }
 
-  const avgEngagement = students.length > 0 
+  const avgEngagement = students.length > 0
     ? Math.round(students.reduce((acc, curr) => acc + (curr.engagementScore || 0), 0) / students.length)
     : 0;
   const atRiskCount = students.filter(s => s.atRisk).length;
   const highPerformance = categories.find(c => c.name === 'High')?.value || 0;
-  
+
   return (
     <div className="space-y-8 animate-in relative">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
         <div>
           <h1 className="text-4xl font-black text-white tracking-tight mb-1 flex items-center gap-3">
-            System Overview 
+            System Overview
             <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_#10b981] animate-pulse block"></span>
           </h1>
           <p className="text-slate-400 font-medium text-sm tracking-wide uppercase">CS101 Active Matrix</p>
@@ -60,30 +60,30 @@ export default function Dashboard({ onSelectStudent }) {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StudentCard 
-          label="Avg Engagement" 
-          value={`${avgEngagement}%`} 
-          subtext={2.4} 
-          trend="up" 
+        <StudentCard
+          label="Avg Engagement"
+          value={`${avgEngagement}%`}
+          subtext={2.4}
+          trend="up"
           trendLabel="vs last cycle"
           colorClass="text-indigo-400 text-glow"
         />
-        <StudentCard 
-          label="Active Terminals" 
-          value={students.length} 
+        <StudentCard
+          label="Active Terminals"
+          value={students.length}
           colorClass="text-slate-100"
         />
-        <StudentCard 
-          label="Optimal Performance" 
-          value={students.length > 0 ? `${Math.round((highPerformance / students.length) * 100)}%` : '0%'} 
-          subtext={5} 
+        <StudentCard
+          label="Optimal Performance"
+          value={students.length > 0 ? `${Math.round((highPerformance / students.length) * 100)}%` : '0%'}
+          subtext={5}
           trend="up"
           colorClass="text-emerald-400 text-glow"
         />
-        <StudentCard 
-          label="Critical Alerts" 
-          value={atRiskCount} 
-          subtext={-1} 
+        <StudentCard
+          label="Critical Alerts"
+          value={atRiskCount}
+          subtext={-1}
           trend="down"
           colorClass="text-red-500 text-glow"
           isAlert={atRiskCount > 0}

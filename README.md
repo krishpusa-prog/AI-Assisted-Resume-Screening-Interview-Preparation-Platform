@@ -18,3 +18,7 @@ Y - Total Score <br>
 SSnorm - Sentiment Score norm <br>
 SSnorm = (SS+1)/2    <br>                                        
 {-1 < SS-Sentiment Score based on feedback < 1} <br>
+PR = 80% Attendance + 20% EQavg
+QS = QSavg (avg of 30 days)
+
+
